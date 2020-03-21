@@ -14,11 +14,11 @@
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" name="name">
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
                             </div>
                             <div class="form-group">
                                 <label for="beschreibung">Beschreibung</label>
-                                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="5"></textarea>
+                                <textarea class="form-control" id="beschreibung" name="beschreibung" rows="5">{{ old('beschreibung') }}</textarea>
                             </div>
                             <input class="btn btn-primary mt-4" type="submit" value="absenden">
                         </form>
