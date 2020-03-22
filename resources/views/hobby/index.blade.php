@@ -13,6 +13,11 @@
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">{{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
                                     <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> Bearbeiten</a>
+                                    <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input class="btn btn-outline-danger btn-sm ml-2" type="submit" value="Löschen">
+                                    </form>
                                 </li>
                             @endforeach
                         </ul>
