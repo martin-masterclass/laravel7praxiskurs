@@ -22,6 +22,9 @@
                             @endforeach
                         </ul>
                         <a class="btn btn-success btn-sm mt-3" href="hobby/create"><i class="fas fa-plus-circle"></i> Neues Hobby anlegen</a>
+                        <div class="mt-3">
+                            {{ $hobbies->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

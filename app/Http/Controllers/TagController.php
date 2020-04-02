@@ -15,7 +15,7 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        dd($tags);
+        //dd($tags);
         return view('tag.index')->with('tags', $tags);
     }
 
