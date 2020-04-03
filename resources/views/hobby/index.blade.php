@@ -12,6 +12,9 @@
                         <ul class="list-group">
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">{{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
+
+                                    <span class="mx-2">Von {{ $hobby->user->name }} ( {{ $hobby->user->hobbies->count() }} Hobbies)</span>
+
                                     <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> Bearbeiten</a>
                                     <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
                                         @csrf
