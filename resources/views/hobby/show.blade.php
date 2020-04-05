@@ -15,7 +15,7 @@
                         <p>{{ $hobby->beschreibung }}</p>
                         <p>
                             @foreach($hobby->tags as $tag)
-                                <a class="badge badge-{{$tag->style}}" href="">{{ $tag->name }}</a>
+                                <a class="badge badge-{{$tag->style}}" href="/hobby/tag/{{ $tag->id }}">{{ $tag->name }}</a>
                             @endforeach
                         </p>
                         <a class="btn btn-success btn-sm mt-3" href="{{ URL::previous() }}"><i class="fas fa-arrow-circle-up"></i> Zurück zur Übersicht</a>
