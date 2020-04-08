@@ -8,13 +8,14 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
+                    <h2>Hallo {{auth()->user()->name }}</h2>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    You are logged in!
+                    <a class="btn btn-success btn-sm" href="/hobby/create"><i class="fas fa-plus-circle"></i> Neues Hobby anlegen</a>
                 </div>
             </div>
         </div>

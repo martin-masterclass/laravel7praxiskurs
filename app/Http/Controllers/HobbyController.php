@@ -59,9 +59,15 @@ class HobbyController extends Controller
         );
         $hobby->save();
         //return redirect('/hobby');
+
+        /*
         return $this->index()->with([
             'meldg_success' => 'Das Hobby <b>' . $hobby->name . '</b> wurde angelegt'
         ]);
+        */
+
+        return redirect('/hobby/' . $hobby->id)->with('meldg_hinweis', 'Bitte weise ein paar Tags zu.');
+
     }
 
     /**
@@ -78,10 +84,13 @@ class HobbyController extends Controller
         $verfuegbareTags = $alleTags->diff($verwendeteTags);
 
         $meldg_success = Session::get('meldg_success');
+        $meldg_hinweis = Session::get('meldg_hinweis');
+
         return view('hobby.show')->with(
             [
                 'hobby' => $hobby,
                 'meldg_success' => $meldg_success,
+                'meldg_hinweis' => $meldg_hinweis,
                 'verfuegbareTags' => $verfuegbareTags
             ]
         );
