@@ -19,8 +19,16 @@ class HobbyController extends Controller
     {
         //$hobbies = Hobby::all();
         //$hobbies = Hobby::paginate(10);
+
+        $meldg_success = Session::get('meldg_success');
+
         $hobbies = Hobby::orderBy('created_at', 'DESC')->paginate(10);
-        return view('hobby.index')->with('hobbies', $hobbies);
+        return view('hobby.index')->with(
+            [
+                'hobbies' => $hobbies,
+                'meldg_success' => $meldg_success
+            ]
+        );
     }
 
     /**
@@ -143,7 +151,7 @@ class HobbyController extends Controller
     {
         $old_name = $hobby->name;
         $hobby->delete();
-        return $this->index()->with([
+        return back()->with([
             'meldg_success' => 'Das Hobby <b>' . $old_name . '</b> wurde gelöscht'
         ]);
     }

@@ -11,6 +11,7 @@
                     <div class="card-body">
 
                         <form action = "/hobby" method="post">
+
                             @csrf
                             <div class="form-group">
                                 <label for="name">Name</label>
