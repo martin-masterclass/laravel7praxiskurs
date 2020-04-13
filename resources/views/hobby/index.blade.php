@@ -11,9 +11,18 @@
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach($hobbies as $hobby)
-                                <li class="list-group-item">{{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
+                                <li class="list-group-item">
 
-                                    <span class="mx-2">Von <a href="/user/{{$hobby->user->id}}">{{ $hobby->user->name }}</a> ( {{ $hobby->user->hobbies->count() }} Hobbies)</span>
+                                    <a class="mr-1" title="Details anzeigen" href="/hobby/{{ $hobby->id }}">
+                                        <img src="/img/thumb_quer.jpg" alt="thumb"></a>
+
+                                    {{ $hobby->name }}
+
+                                    <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
+
+                                    <span class="mx-2">Von <a href="/user/{{$hobby->user->id}}">{{ $hobby->user->name }}</a> ( {{ $hobby->user->hobbies->count() }} Hobbies)
+                                    <a href="/user/{{ $hobby->user->id }}"><img class="rounded" src="/img/thumb_hoch.jpg"></a>
+                                    </span>
 
                                     <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> Bearbeiten</a>
                                     <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">

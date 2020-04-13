@@ -8,12 +8,32 @@
                 <div class="card-header">Dashboard</div>
 
                 <div class="card-body">
-                    <h2>Hallo {{auth()->user()->name }}</h2>
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}5
+
+                    <div class="row">
+                        <div class="col-md-9">
+
+                            <h2>Hallo {{auth()->user()->name }}</h2>
+                            @if (session('status'))
+                                <div class="alert alert-success" role="alert">
+                                    {{ session('status') }}
+                                </div>
+                            @endif
+
+
+                            <h5>Dein Motto</h5>
+                            <p>{{ auth()->user()->motto ?? '' }}</p>
+
+                            <h5>Deine "Über-Mich" - Beschreibung</h5>
+                            <p>{{ auth()->user()->ueber_mich ?? '' }}</p>
+
+                            <p>
+                                <a href="/user/{{ auth()->user()->id }}/edit" class="btn btn-primary">Profil bearbeiten</a>
+                            </p>
                         </div>
-                    @endif
+                        <div class="col-md-3">
+                            <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ auth()->user()->name }}">
+                        </div>
+                    </div>
 
                     @isset($hobbies)
                         @if($hobbies->count() > 0)
@@ -21,7 +41,12 @@
                         @endif
                         <ul class="list-group">
                         @foreach($hobbies as $hobby)
-                        <li class="list-group-item">{{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
+                        <li class="list-group-item">
+
+                            <a title="Details anzeigen" href="/hobby/{{ $hobby->id }}">
+                                <img src="/img/thumb_quer.jpg" alt="thumb"></a>
+
+                            {{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
 
                             <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> Bearbeiten</a>
                             <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
