@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class HobbyController extends Controller
 {
@@ -19,6 +20,7 @@ class HobbyController extends Controller
     {
         //$hobbies = Hobby::all();
         //$hobbies = Hobby::paginate(10);
+
 
         $meldg_success = Session::get('meldg_success');
 
