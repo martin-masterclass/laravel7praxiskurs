@@ -135,6 +135,17 @@ class HobbyController extends Controller
             ]
         );
 
+        if ($request->bild) {
+            $bild = Image::make($request->bild);
+            $breite = $bild->width();
+            $hoehe = $bild->height();
+            if ( $breite > $hoehe) {
+                dd("Querformat");
+            } else {
+                dd("Hochformat");
+            }
+        }
+
         $hobby->update([
             'name' => $request->name,
             'beschreibung' => $request->beschreibung
