@@ -55,7 +55,8 @@ class HobbyController extends Controller
         $request->validate(
             [
                 'name' => 'required|min:3',
-                'beschreibung' => 'required|min:5'
+                'beschreibung' => 'required|min:5',
+                'bild' => 'mimes:jpg,jpeg,bmp,png,gif'
             ]
         );
 
@@ -129,7 +130,8 @@ class HobbyController extends Controller
         $request->validate(
             [
                 'name' => 'required|min:3',
-                'beschreibung' => 'required|min:5'
+                'beschreibung' => 'required|min:5',
+                'bild' => 'mimes:jpg,jpeg,bmp,png,gif'
             ]
         );
 
