@@ -69,13 +69,10 @@ class HobbyController extends Controller
             ]
         );
         $hobby->save();
-        //return redirect('/hobby');
 
-        /*
-        return $this->index()->with([
-            'meldg_success' => 'Das Hobby <b>' . $hobby->name . '</b> wurde angelegt'
-        ]);
-        */
+        if ($request->bild) {
+            $this->saveImages($request->bild, $hobby->id);
+        }
 
         return redirect('/hobby/' . $hobby->id)->with('meldg_hinweis', 'Bitte weise ein paar Tags zu.');
 
@@ -136,26 +133,7 @@ class HobbyController extends Controller
         );
 
         if ($request->bild) {
-            $bild = Image::make($request->bild);
-            $breite = $bild->width();
-            $hoehe = $bild->height();
-            if ( $breite > $hoehe) {
-                // Querformat
-                Image::make($request->bild)
-                    ->widen(1200)
-                    ->save(public_path() . '/img/hobby/' . $hobby->id . '_gross.jpg');
-                Image::make($request->bild)
-                    ->widen(60)
-                    ->save(public_path() . '/img/hobby/' . $hobby->id . '_thumb.jpg');
-            } else {
-                // Hochformat
-                Image::make($request->bild)
-                    ->heighten(900)
-                    ->save(public_path() . '/img/hobby/' . $hobby->id . '_gross.jpg');
-                Image::make($request->bild)
-                    ->heighten(60)
-                    ->save(public_path() . '/img/hobby/' . $hobby->id . '_thumb.jpg');
-            }
+            $this->saveImages($request->bild, $hobby->id);
         }
 
         $hobby->update([
@@ -182,4 +160,29 @@ class HobbyController extends Controller
             'meldg_success' => 'Das Hobby <b>' . $old_name . '</b> wurde gelöscht'
         ]);
     }
+
+
+    public function saveImages($bildInput, $hobby_id) {
+        $bild = Image::make($bildInput);
+        $breite = $bild->width();
+        $hoehe = $bild->height();
+        if ( $breite > $hoehe) {
+            // Querformat
+            Image::make($bildInput)
+                ->widen(1200)
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg');
+            Image::make($bildInput)
+                ->widen(60)
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg');
+        } else {
+            // Hochformat
+            Image::make($bildInput)
+                ->heighten(900)
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg');
+            Image::make($bildInput)
+                ->heighten(60)
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg');
+        }
+    }
+
 }
