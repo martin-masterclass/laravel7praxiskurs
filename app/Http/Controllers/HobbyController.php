@@ -170,7 +170,9 @@ class HobbyController extends Controller
             // Querformat
             Image::make($bildInput)
                 ->widen(1200)
-                ->save(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg');
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg')
+                ->widen(400)->pixelate(12)
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_verpixelt.jpg');
             Image::make($bildInput)
                 ->widen(60)
                 ->save(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg');
@@ -178,7 +180,9 @@ class HobbyController extends Controller
             // Hochformat
             Image::make($bildInput)
                 ->heighten(900)
-                ->save(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg');
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_gross.jpg')
+                ->heighten(400)->pixelate(12)
+                ->save(public_path() . '/img/hobby/' . $hobby_id . '_verpixelt.jpg');
             Image::make($bildInput)
                 ->heighten(60)
                 ->save(public_path() . '/img/hobby/' . $hobby_id . '_thumb.jpg');
