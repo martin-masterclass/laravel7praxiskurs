@@ -19,10 +19,10 @@
                                 <small class="form-text text-danger">{!! $errors->first('motto') !!}</small>
                             </div>
                             <div class="mb-2">
-                                @if(file_exists("img/user/" . auth()->id() . "_gross.jpg"))
-                                    <img style="max-width: 400px; max-height: 300px;" src="/img/user/{{ auth()->id() }}_gross.jpg" alt="thumb">
+                                @if(file_exists("img/user/" . $user->id . "_gross.jpg"))
+                                    <img style="max-width: 400px; max-height: 300px;" src="/img/user/{{ $user->id }}_gross.jpg" alt="thumb">
                                     <div class="float-right">
-                                        <a class="btn btn-sm btn-outline-danger" href="/delete-image/user/{{ auth()->id() }}">Bild löschen</a>
+                                        <a class="btn btn-sm btn-outline-danger" href="/delete-image/user/{{ $user->id }}">Bild löschen</a>
                                     </div>
                                 @endif
                             </div>
