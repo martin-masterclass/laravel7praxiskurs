@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
     public function hobbies() {
         return $this->hasMany('App\Hobby');
     }
@@ -22,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','motto', 'ueber_mich'
     ];
 
     /**
