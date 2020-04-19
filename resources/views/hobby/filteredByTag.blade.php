@@ -24,7 +24,9 @@
 
 
                                     <span class="mx-2">Von <a href="/user/{{$hobby->user->id}}">{{ $hobby->user->name }}</a> ( {{ $hobby->user->hobbies->count() }} Hobbies)
-                                    <a href="/user/{{ $hobby->user->id }}"><img class="rounded" src="/img/thumb_hoch.jpg"></a>
+                                        @if(file_exists("img/user/" . $hobby->user->id . "_thumb.jpg"))
+                                            <a href="/user/{{ $hobby->user->id }}"><img class="rounded" src="/img/user/{{ $hobby->user->id }}_thumb.jpg" ></a>
+                                        @endif
                                     </span>
 
                                     <a class="ml-2 btn btn-sm btn-outline-primary" href="/hobby/{{ $hobby->id }}/edit"><i class="fas fa-edit"></i> Bearbeiten</a>

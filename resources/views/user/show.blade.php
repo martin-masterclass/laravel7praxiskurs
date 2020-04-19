@@ -19,9 +19,10 @@
                                     <ul class="list-group">
                                         @foreach($user->hobbies as $hobby)
                                             <li class="list-group-item">
-
+                                                @if(file_exists("img/hobby/". $hobby->id . "_thumb.jpg"))
                                                 <a title="Details anzeigen" href="/hobby/{{ $hobby->id }}">
-                                                    <img src="/img/thumb_quer.jpg" alt="thumb"></a>
+                                                    <img src="/img/hobby/{{ $hobby->id }}_thumb.jpg" alt="thumb"></a>
+                                                @endif
 
                                                 {{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
 
@@ -38,7 +39,17 @@
                                 @endif
                             </div>
                             <div class="col-md-3">
-                                <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ $user->name }}">
+                                @auth
+                                    @if(file_exists("img/user/" . $user->id . "_gross.jpg"))
+                                        <img class="img-fluid" src="/img/user/{{ $user->id }}_gross.jpg" alt="">
+                                    @endif
+                                @endauth
+                                @guest
+                                    @if(file_exists("img/user/" . $user->id . "_verpixelt.jpg"))
+                                        <img class="img-fluid" src="/img/user/{{ $user->id }}_verpixelt.jpg" alt="">
+                                    @endif
+                                @endguest
+
                             </div>
                         </div>
 

@@ -31,7 +31,9 @@
                             </p>
                         </div>
                         <div class="col-md-3">
-                            <img class="img-thumbnail" src="/img/300x400.jpg" alt="{{ auth()->user()->name }}">
+                            @if(file_exists("img/user/" . auth()->id() . "_gross.jpg"))
+                                <img class="img-thumbnail" src="/img/user/{{ auth()->id() }}_gross.jpg" alt="{{ auth()->user()->name }}">
+                            @endif
                         </div>
                     </div>
 
