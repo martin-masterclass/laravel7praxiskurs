@@ -34,8 +34,13 @@ Route::resource('user', 'UserController');
 
 Route::get('/hobby/tag/{tag_id}', 'hobbyTagController@getFilteredHobbies')->name('hobby_tag');
 
-Route::get('/hobby/{hobby_id}/tag/{tag_id}/attach', 'hobbyTagController@attachTag');
-Route::get('/hobby/{hobby_id}/tag/{tag_id}/detach', 'hobbyTagController@detachTag');
+Route::get('/hobby/{hobby_id}/tag/{tag_id}/attach', 'hobbyTagController@attachTag')
+->name('hobby_tag_attach')
+->middleware('auth');
+
+Route::get('/hobby/{hobby_id}/tag/{tag_id}/detach', 'hobbyTagController@detachTag')
+->name('hobby_tag_detach')
+->middleware('auth');
 
 // Bilder vom Hobby löschen
 Route::get('/delete-image/hobby/{hobby_id}', 'hobbyController@deleteImages');
