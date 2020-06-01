@@ -33,7 +33,7 @@ class hobbyTagController extends Controller
         $hobby = Hobby::find($hobby_id);
 
         if (Gate::denies('connect_hobbyTag', $hobby)) {
-            abort(403, 'Das Hobby ist nicht von Dir.');
+            abort(403, 'Das Hobby gehört Dir nicht.');
         }
 
         $tag = Tag::find($tag_id);
@@ -49,7 +49,7 @@ class hobbyTagController extends Controller
         $hobby = Hobby::find($hobby_id);
 
         if (Gate::denies('connect_hobbyTag', $hobby)) {
-            abort(403, 'Das Hobby ist nicht von Dir.');
+            abort(403, 'Das Hobby gehört Dir nicht.');
         }
 
         $tag = Tag::find($tag_id);
