@@ -15,12 +15,12 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" name="name" value="{{ $tag->name ?? old('name') }}">
+                                <input type="text" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" name="name" value="{{ old('name') && $tag->name }}">
                                 <small class="form-text text-danger">{!! $errors->first('name') !!}</small>
                             </div>
                             <div class="form-group">
                                 <label for="style">Style</label>
-                                <input type="text" class="form-control {{ $errors->has('style') ? 'border-danger' : '' }}" id="style" name="style" value="{{ $tag->style ?? old('style') }}">
+                                <input type="text" class="form-control {{ $errors->has('style') ? 'border-danger' : '' }}" id="style" name="style" value="{{ old('style') ?? $tag->style }}">
                                 <small class="form-text text-danger">{!! $errors->first('style') !!}</small>
                             </div>
 

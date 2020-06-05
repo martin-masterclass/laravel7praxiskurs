@@ -15,7 +15,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" name="name" value="{{ $hobby->name ?? old('name') }}">
+                                <input type="text" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" name="name" value="{{ old('name') ?? $hobby->name }}">
                                 <small class="form-text text-danger">{!! $errors->first('name') !!}</small>
                             </div>
                             <div class="mb-2">
@@ -33,7 +33,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="beschreibung">Beschreibung</label>
-                                <textarea class="form-control {{ $errors->has('beschreibung') ? 'border-danger' : '' }}" id="beschreibung" name="beschreibung" rows="5">{{ $hobby->beschreibung ?? old('beschreibung') }}</textarea>
+                                <textarea class="form-control {{ $errors->has('beschreibung') ? 'border-danger' : '' }}" id="beschreibung" name="beschreibung" rows="5">{{ old('beschreibung') ?? $hobby->beschreibung }}</textarea>
                                 <small class="form-text text-danger">{!! $errors->first('beschreibung') !!}</small>
                             </div>
                             <input class="btn btn-primary mt-4" type="submit" value="absenden">
