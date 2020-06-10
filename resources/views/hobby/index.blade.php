@@ -53,6 +53,7 @@
                     </div>
                 </div>
             </div>
+            @include( '_partials.loeschenFormular')
         </div>
     </div>
 @endsection
