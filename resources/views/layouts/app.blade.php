@@ -36,7 +36,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Startseite</a>
+                            @auth
+                                <a class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="/home">Home</a>
+                            @endauth
+                            @guest
+                                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Startseite</a>
+                            @endguest
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Request::is('hobby*') ? 'active' : '' }}" href="/hobby">Hobbies</a>
@@ -91,6 +96,13 @@
                 <div class="container">
                     <div class="alert alert-success">
                         {!! $meldg_success !!}
+                    </div>
+                </div>
+            @endisset
+            @isset($meldg_hinweis)
+                <div class="container">
+                    <div class="alert alert-warning">
+                        {!! $meldg_hinweis !!}
                     </div>
                 </div>
             @endisset
