@@ -6,26 +6,27 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Alle Hobbies</div>
+                    <div class="card-header">Alle Hobbies gefiltered nach <span style="font-size: 120%" class="ml-2 badge badge-{{$tag->style}}">{{$tag->name}}</span>
+                        <a class="float-right" href="/hobby">Alle Hobbies anzeigen</a>
+                    </div>
 
                     <div class="card-body">
                         <ul class="list-group">
                             @foreach($hobbies as $hobby)
                                 <li class="list-group-item">
+
                                     @if(file_exists("img/hobby/" . $hobby->id . "_thumb.jpg"))
-                                    <a class="mr-1" title="Details anzeigen" href="/hobby/{{ $hobby->id }}">
-                                        <img src="/img/hobby/{{ $hobby->id }}_thumb.jpg" alt="thumb"></a>
+                                        <a class="mr-1" title="Details anzeigen" href="/hobby/{{ $hobby->id }}">
+                                            <img src="/img/hobby/{{ $hobby->id }}_thumb.jpg" alt="thumb"></a>
                                     @endif
 
-                                    {{ $hobby->name }}
+                                    {{ $hobby->name }} <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
 
-                                    <a class="ml-2" href="/hobby/{{ $hobby->id }}">Detailansicht</a>
 
                                     <span class="mx-2">Von <a href="/user/{{$hobby->user->id}}">{{ $hobby->user->name }}</a> ( {{ $hobby->user->hobbies->count() }} Hobbies)
-
-                                    @if(file_exists("img/user/" . $hobby->user->id . "_thumb.jpg"))
-                                        <a href="/user/{{ $hobby->user->id }}"><img class="rounded" src="/img/user/{{ $hobby->user->id }}_thumb.jpg" ></a>
-                                    @endif
+                                        @if(file_exists("img/user/" . $hobby->user->id . "_thumb.jpg"))
+                                            <a href="/user/{{ $hobby->user->id }}"><img class="rounded" src="/img/user/{{ $hobby->user->id }}_thumb.jpg" ></a>
+                                        @endif
                                     </span>
 
                                     @can('update', $hobby)
@@ -33,7 +34,11 @@
                                     @endcan
 
                                     @can('delete', $hobby)
-                                    <button onclick="confirm_delete('das Hobby','{{$hobby->name}}','hobby',{{$hobby->id}});" class="btn btn-sm btn-outline-danger ml-2">Löschen</button>
+                                    <form style="display: inline;" action="/hobby/{{ $hobby->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input class="btn btn-outline-danger btn-sm ml-2" type="submit" value="Löschen">
+                                    </form>
                                     @endcan
 
                                     <div class="float-right">{{ $hobby->created_at->diffForHumans() }}</div>
@@ -53,7 +58,6 @@
                     </div>
                 </div>
             </div>
-            @include( '_partials.loeschenFormular')
         </div>
     </div>
 @endsection

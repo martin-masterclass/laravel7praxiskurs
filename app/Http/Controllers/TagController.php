@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+        $this->middleware('admin')->except(['index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,7 @@ class TagController extends Controller
     public function index()
     {
         $tags = Tag::all();
-        dd($tags);
+        //dd($tags);
         return view('tag.index')->with('tags', $tags);
     }
 
