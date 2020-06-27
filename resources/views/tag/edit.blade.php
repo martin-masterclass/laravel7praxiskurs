@@ -15,7 +15,7 @@
                             @method('PUT')
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" name="name" value="{{ old('name') && $tag->name }}">
+                                <input type="text" class="form-control {{ $errors->has('name') ? 'border-danger' : '' }}" id="name" name="name" value="{{ old('name') ?? $tag->name }}">
                                 <small class="form-text text-danger">{!! $errors->first('name') !!}</small>
                             </div>
                             <div class="form-group">
