@@ -62,7 +62,8 @@
                             </div>
                         </div>
 
-                        @if( !(strstr(URL::previous(), '/user/'))) {{-- Zurücklink nicht anzeigen, wenn ich von User Detailseite komme --}}
+                        @if( !(strstr(URL::previous(), '/user/')) && !isset($dontShowBackButton) )
+                            {{-- Zurücklink nicht anzeigen, wenn ich von User Detailseite komme --}}
                             <a class="btn btn-success btn-sm mt-3" href="{{ URL::previous() }}"><i class="fas fa-arrow-circle-up"></i> Zurück</a>
                         @endif
                     </div>
