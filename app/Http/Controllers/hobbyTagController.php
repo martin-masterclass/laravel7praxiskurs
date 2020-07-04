@@ -39,7 +39,12 @@ class hobbyTagController extends Controller
         $tag = Tag::find($tag_id);
         $hobby->tags()->attach($tag_id);
 
-        return back()->with('meldg_success', 'Der Tag <b>' .$tag->name . '</b> wurde hinzugefügt.');
+        return back()->with(
+            [
+                'meldg_success' => 'Der Tag <b>' .$tag->name . '</b> wurde hinzugefügt.',
+                'dontShowBackButton' => true
+            ]
+        );
 
     }
 
@@ -55,7 +60,12 @@ class hobbyTagController extends Controller
         $tag = Tag::find($tag_id);
         $hobby->tags()->detach($tag_id);
 
-        return back()->with('meldg_success', 'Der Tag <b>' .$tag->name . '</b> wurde entfernt.');
+        return back()->with(
+            [
+                'meldg_success' => 'Der Tag <b>' .$tag->name . '</b> wurde entfernt.',
+                'dontShowBackButton' => true
+            ]
+        );
 
     }
 

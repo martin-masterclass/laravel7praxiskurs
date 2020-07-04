@@ -100,13 +100,15 @@ class HobbyController extends Controller
 
         $meldg_success = Session::get('meldg_success');
         $meldg_hinweis = Session::get('meldg_hinweis');
+        $dontShowBackButton = Session::get('dontShowBackButton');
 
         return view('hobby.show')->with(
             [
                 'hobby' => $hobby,
                 'meldg_success' => $meldg_success,
                 'meldg_hinweis' => $meldg_hinweis,
-                'verfuegbareTags' => $verfuegbareTags
+                'verfuegbareTags' => $verfuegbareTags,
+                'dontShowBackButton' => $dontShowBackButton,
             ]
         );
     }

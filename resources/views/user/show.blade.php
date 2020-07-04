@@ -53,7 +53,6 @@
                             </div>
                         </div>
 
-
                         <a class="btn btn-success btn-sm mt-3" href="{{ URL::previous() }}"><i class="fas fa-arrow-circle-up"></i> Zurück</a>
                     </div>
                 </div>
